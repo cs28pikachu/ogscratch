@@ -9,7 +9,7 @@ const initialState = {
   userCreated: false,
   artRecieved: false,
   failedLogin: false,
-  signupFailed: false,
+  failedSignup: false,
   art: [],
 
 };
@@ -76,13 +76,15 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         userCreated: newUserCreated,
+        failedSignup: false
       };
 
     case types.POST_CREATE_USER_FAILURE:
-    //TODO: show failure code;
+    console.log("Create User Failed");
 
       return {
         ...state,
+        failedSignup: true
       };
 
     case "CHECK_SESSION":
