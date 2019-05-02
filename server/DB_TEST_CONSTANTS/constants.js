@@ -26,10 +26,7 @@ module.exports = {
             lastname: "Sliver",
             password: "password",
             username: "samsliver",
-            email: "am@sliver.com",
-            lat: "33.987841",
-            lng: "-118.470739",
-            bio: "Silver artist!"
+          
         }, {
             firstname: "Sam",
             lastname: "wise",
@@ -95,13 +92,7 @@ module.exports = {
             "title": "California Sunsets",
             "artist": 2,
             "price": 1600,
-            "image": "https://i.imgur.com/3eGyg9n.jpg",
-            "material": "Acrylic on Canvas",
-            "width": 30,
-            "height": 30,
-            "lat": 33.975,
-            "lng": -118.23,
-            "description": "This 30 inch square"
+           
         },
         {
             "title": "Pink Panther Cash Money",
