@@ -9,6 +9,7 @@ import ArtUnit from './ArtUnit.jsx';
 const mapStateToProps = store => ({
   error: store.userTraffic.error,
   art: store.userTraffic.art,
+  verified: store.userTraffic.verified,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -29,6 +30,11 @@ class Home extends Component {
     
     
     render() {
+      if(this.props.verified === false){
+        return <Redirect to="/signin" />
+      }
+
+
       let displayArt = [];
       let art = this.props.art;
       art.forEach((item,i) => {
@@ -41,10 +47,9 @@ class Home extends Component {
             price={item.price}
             />)
         })
-    
+      
     return (
       <div className="home">
-      <button onClick={this.props.logout}>Logout</button>
         <h2>Current Art Available</h2>
         {displayArt}
       </div>

@@ -32,7 +32,7 @@ class Signin extends Component {
   }
 
   render() {
-    if (this.props.verified === true && homeloaded === false) {
+    if (this.props.verified === true) {
       homeloaded = true;
       return <Redirect to="/Home"></Redirect>
     }

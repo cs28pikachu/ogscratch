@@ -95,6 +95,14 @@ const userReducer = (state = initialState, action) => {
         verified: newVerified
       }
 
+      case types.LOGOUT:{
+
+        return {
+          ...state,
+          verified: false
+        }
+      }
+
     case types.POST_GET_ART_SUCCESS:
       newArtRecieved = true;
       newArt = action.payload;

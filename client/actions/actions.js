@@ -170,10 +170,10 @@ export const postGetArtFailure = (err) => ({
 
 
 export const logout = () => (dispatch) => {
-
+console.log('logout button clicked');
   axios({
     method: 'get',
-    url: '/api/getallart' //api test route
+    url: '/api/logout' //api test route
   })
     .then(response => {
       dispatch(

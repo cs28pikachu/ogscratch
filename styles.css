@@ -46,6 +46,14 @@
     color:red;
 }
 
+#logoutButton {
+    position: fixed;
+    right: 40px;
+    top: 30px;
+    padding: 10px;    
+    background-color: #4CAF50;
+}
+
 .login-back {
     position: absolute;
     top: 0;
@@ -75,6 +83,8 @@ img {
     background-size: cover;
     cursor: pointer;
     will-change: transform, opacity;
+    width: 650px;
+    height: 650px;
 } 
 
 .artInfo {
