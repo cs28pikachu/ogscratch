@@ -8,6 +8,8 @@ const initialState = {
   needsToSignup: false,
   userCreated: false,
   artRecieved: false,
+  failedLogin: false,
+  signupFailed: false,
   art: [],
 
 };
@@ -46,6 +48,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         verified: newVerified,
+        failedLogin: false,
         // May need to reset certain areas of state (error, etc.)
         // error: null
       };
@@ -58,6 +61,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         verified: newVerified,
         error: newError,
+        failedLogin: true,
       };
 
     case types.SIGNUP:
@@ -75,6 +79,8 @@ const userReducer = (state = initialState, action) => {
       };
 
     case types.POST_CREATE_USER_FAILURE:
+    //TODO: show failure code;
+
       return {
         ...state,
       };

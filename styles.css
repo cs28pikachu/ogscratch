@@ -7,8 +7,7 @@
     display: flex;
     flex-direction: row;
     overflow-x: visible;
-    white-space: wrap;
-    
+    white-space: wrap; 
 }
 
 .sign-in {
@@ -38,11 +37,19 @@
     background-size: cover;
 } */
 
+.hideMe{
+    display: none;
+}
+
+#failedLogin{
+    font-weight: 600;
+    color:red;
+}
+
 .login-back {
     position: absolute;
     top: 0;
     left: 0;
-
 }
 
 .sign-up {

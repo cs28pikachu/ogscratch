@@ -83,7 +83,7 @@ app.post('/api/testsignin',
       res.status(403);
       res.send(res.locals.error);
     }
-    else res.send(res.locals.result);
+    else res.send("Sign In Worked");
   });
 
 app.post('/api/findbydistance',

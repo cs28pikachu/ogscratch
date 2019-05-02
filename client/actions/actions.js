@@ -15,8 +15,11 @@ export const loginPassword = (password) => ({
 });
 
 //This is where we use THUNK. This action creator makes a POST request to the server to verify username and password entered when logging in.
-export const verifyLogin = (username, password) => (dispatch, getState) => {
+export const verifyLogin = () => (dispatch, getState) => {
   console.log('LOGIN SENT TO VERIFYLOGIN')
+  const state = getState();
+  const username = state.userTraffic.username;
+  const password = state.userTraffic.password;
   console.log('THIS IS USERNAME', username)
   console.log('THIS IS PASSWORD', password)
   axios({
@@ -175,7 +178,7 @@ export const logout = () => (dispatch) => {
     .then(response => {
       dispatch(
         ({
-          type: types.POST_GET_ART_SUCCESS,
+          type: types.LOGOUT,
           payload: response.data
         })
       )
