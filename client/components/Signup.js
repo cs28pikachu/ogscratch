@@ -9,6 +9,7 @@ const mapStateToProps = store => ({
   username: store.userTraffic.username,
   password: store.userTraffic.password,
   userCreated: store.userTraffic.userCreated,
+  failedSignup: store.userTraffic.failedSignup,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,10 +24,14 @@ class Signup extends Component {
     }
 
     render() {
-      if (this.props.userCreated === true && homeAfterSignupLoaded === false) {
+      if (this.props.userCreated === true) {
         homeAfterSignupLoaded = true;
         return <Redirect to="/Home"></Redirect>
       }
+
+      const hideMe = "hideMe"
+      if(this.props.failedSignup) hideMe = '';
+
       return (
         <div className="sign-up">
         <h3>Signup</h3>
@@ -35,6 +40,7 @@ class Signup extends Component {
         <label htmlFor="password">Password</label>
         <input type="password" onChange={(e) => this.props.loginPassword(e)} id="password" placeholder="password"></input>
         <button onClick={(e) => { e.preventDefault(); this.props.createuser(this.props.username, this.props.password)}}>Create Account</button>
+        <span id="failedLogin" className={hideMe}>Sign up failed</span>
         </div>
     )
   }

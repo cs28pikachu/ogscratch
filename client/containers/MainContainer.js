@@ -15,8 +15,9 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  checkSession: () => {dispatch(actions.checkSession())}
-
+  checkSession: () => {dispatch(actions.checkSession())},
+  logout: () => {dispatch(actions.logout())}
+  
 });
 
 
@@ -32,6 +33,10 @@ class MainContainer extends Component {
   }
 
   render() {
+    
+    let hiddenClass = 'hideMe';
+    if(this.props.verified) hiddenClass = '';
+
     if (this.props.verified != true && loaded === false) {
         loaded = true;
         console.log(`Redirecting from /main comp`);
@@ -44,7 +49,9 @@ class MainContainer extends Component {
 
     return (
       <div className="MainContainer">
-        <h1 className="welcomeText">Welcome to THE Artful Collective.</h1>
+        <h1 className="welcomeText"><span id="welcomeText">Welcome</span><span id='fixedTitle'>  <span id="the">THE</span> Artful Collective</span></h1>
+        <button id="logoutButton" className={hiddenClass} onClick={this.props.logout}>Logout</button>
+
       </div>
     )
     
