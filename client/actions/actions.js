@@ -15,8 +15,11 @@ export const loginPassword = (password) => ({
 });
 
 //This is where we use THUNK. This action creator makes a POST request to the server to verify username and password entered when logging in.
-export const verifyLogin = (username, password) => (dispatch, getState) => {
+export const verifyLogin = () => (dispatch, getState) => {
   console.log('LOGIN SENT TO VERIFYLOGIN')
+  const state = getState();
+  const username = state.userTraffic.username;
+  const password = state.userTraffic.password;
   console.log('THIS IS USERNAME', username)
   console.log('THIS IS PASSWORD', password)
   axios({
@@ -99,19 +102,19 @@ export const createuser = (username, password) => (dispatch) => {
       //Once we receive a "no error" response from server, we dispatch action creator postCreateUserSuccess
       //Dispatch takes an object as an argument (action creator object)
       return dispatch(
-        postCreateUserSuccess({
+        {
           type: types.POST_CREATE_USER_SUCCESS,
           payload: response.data
-        })
+        }
       )
     })
     //If we receive an error from the server (i.e. missing username or password), we dispatch action creator postCreateUserFailure
     .catch(
       error => dispatch(
-        postCreateUserFailure({
+        {
           type: types.POST_CREATE_USER_FAILURE,
           payload: error
-        })
+        }
       )
     )
 }
@@ -164,3 +167,30 @@ export const postGetArtFailure = (err) => ({
   type: types.POST_GET_ART_FAILURE,
   payload: err
 });
+
+
+export const logout = () => (dispatch) => {
+console.log('logout button clicked');
+  axios({
+    method: 'get',
+    url: '/api/logout' //api test route
+  })
+    .then(response => {
+      dispatch(
+        ({
+          type: types.LOGOUT,
+          payload: response.data
+        })
+      )
+    })
+    .catch(error => {
+      dispatch(
+        ({
+          type: types.POST_GET_ART_FAILURE,
+          payload: error
+        })
+      )
+    }
+    )
+
+}

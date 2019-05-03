@@ -2,6 +2,8 @@ const request = require('supertest');
 const fs = require('fs');
 const path = require('path');
 
+const constants = require('../server/DB_TEST_CONSTANTS/constants')
+
 // const testJsonFile = path.resolve(__dirname, '../server/db/markets.test.json');
 
 
@@ -21,8 +23,25 @@ describe('Route integration', () => {
         .get('/')
         .expect('Content-Type', /text\/html/)
         .expect(200));
-        
+
+
     });
+
+    describe('GET ALL ART', () => {
+
+      it('Returns art from the DB in an array', () => request(server)
+        .get('/api/getallart')
+        .expect((res) => {
+          const stringBody = JSON.stringify(res.body);
+          
+          expect(Array.isArray(res.body)).toEqual(true);
+
+          expect(stringBody).toContain(constants.arts[0].image);
+          expect(stringBody).toContain(constants.arts[1].image);
+          expect(stringBody).toContain(constants.arts[2].image);
+          expect(stringBody).toContain(constants.arts[constants.arts.length -1 ].image);
+        }));
+    })
 
   });
 });

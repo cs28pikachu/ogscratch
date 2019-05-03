@@ -52,10 +52,10 @@ app.post('/api/testauth/',
   testQueryController.testAuth,
   testCookieController.setSSIDCookie,
   testSessionController.verifySession,
-  testSessionController.lookupSession,
+  // testSessionController.lookupSession,
   (req, res) => {
     console.log(req.body)
-    if (res.locals.error) res.send(res.locals.error);
+    if (res.locals.error) res.status(444).send(res.locals.error);
     else res.send(res.locals.result);
   });
 
@@ -83,7 +83,7 @@ app.post('/api/testsignin',
       res.status(403);
       res.send(res.locals.error);
     }
-    else res.send(res.locals.result);
+    else res.send("Sign In Worked");
   });
 
 app.post('/api/findbydistance',
@@ -97,6 +97,17 @@ app.post('/api/findbydistance',
     }
     else res.send(res.locals.result);
   })
+
+app.get('/api/logout', (req,res) => {
+  cookie = req.cookies;
+    for (var prop in cookie) {
+        if (!cookie.hasOwnProperty(prop)) {
+            continue;
+        }    
+        res.cookie(prop, '', {expires: new Date(0)});
+    }
+  res.send("loggedout");
+})
 
 app.get('/*', (req, res) => {
   console.log('Hit Default route - sending to index');
