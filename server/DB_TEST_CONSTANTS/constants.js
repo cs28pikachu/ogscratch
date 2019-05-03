@@ -26,10 +26,7 @@ module.exports = {
             lastname: "Sliver",
             password: "password",
             username: "samsliver",
-            email: "am@sliver.com",
-            lat: "33.987841",
-            lng: "-118.470739",
-            bio: "Silver artist!"
+          
         }, {
             firstname: "Sam",
             lastname: "wise",
@@ -65,7 +62,7 @@ module.exports = {
             "height": 30,
             "lat": 33.987851,
             "lng": -118.470719,
-            "description": "This original artwork is wired and ready to hang. The sides of this colorful artwork are painted and it does not require framing. This mixed media artwork is painted on canvas. It is signed by the artist on the front and the back. "
+            "description": "This original artwork is wired and ready to hang. "
         },
         {
             "title": "The World VI",
@@ -77,7 +74,7 @@ module.exports = {
             "height": 30,
             "lat": 33.977851,
             "lng": -118.26,
-            "description": "The surface "
+            "description": "It's ART "
         },
         {
             "title": "Happy 17/4",
@@ -95,13 +92,7 @@ module.exports = {
             "title": "California Sunsets",
             "artist": 2,
             "price": 1600,
-            "image": "https://i.imgur.com/3eGyg9n.jpg",
-            "material": "Acrylic on Canvas",
-            "width": 30,
-            "height": 30,
-            "lat": 33.975,
-            "lng": -118.23,
-            "description": "This 30 inch square"
+           
         },
         {
             "title": "Pink Panther Cash Money",
@@ -113,7 +104,7 @@ module.exports = {
             "height": 48,
             "lat": 33.981,
             "lng": -118.2,
-            "description": "This one-of-a-kind 48 i"
+            "description": "We live on the eARTh"
         },
         {
             "title": "Valentine's Sweethearts",

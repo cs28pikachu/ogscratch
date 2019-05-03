@@ -15,6 +15,7 @@ const mapStateToProps = store => ({
   verified: store.userTraffic.verified,
   error: store.userTraffic.error,
   needsToSignup: store.userTraffic.needsToSignup,
+  failedLogin: store.userTraffic.failedLogin,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -31,7 +32,7 @@ class Signin extends Component {
   }
 
   render() {
-    if (this.props.verified === true && homeloaded === false) {
+    if (this.props.verified === true) {
       homeloaded = true;
       return <Redirect to="/Home"></Redirect>
     }
@@ -40,12 +41,16 @@ class Signin extends Component {
       return <Redirect to="/signup"></Redirect>
     }
 
+    console.log('login failed', this.props.failedLogin);
+
+
     return (
       <div>
         <Login 
         loginPassword={this.props.loginPassword}
         loginUsername={this.props.loginUsername}
         verifyLogin={this.props.verifyLogin}
+        failedLogin={this.props.failedLogin}
         signup={this.props.signup}
         />
       </div>

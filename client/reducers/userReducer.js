@@ -8,6 +8,8 @@ const initialState = {
   needsToSignup: false,
   userCreated: false,
   artRecieved: false,
+  failedLogin: false,
+  failedSignup: false,
   art: [],
 
 };
@@ -46,6 +48,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         verified: newVerified,
+        failedLogin: false,
         // May need to reset certain areas of state (error, etc.)
         // error: null
       };
@@ -58,6 +61,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         verified: newVerified,
         error: newError,
+        failedLogin: true,
       };
 
     case types.SIGNUP:
@@ -72,11 +76,15 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         userCreated: newUserCreated,
+        failedSignup: false
       };
 
     case types.POST_CREATE_USER_FAILURE:
+    console.log("Create User Failed");
+
       return {
         ...state,
+        failedSignup: true
       };
 
     case "CHECK_SESSION":
@@ -85,6 +93,14 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         verified: newVerified
+      }
+
+      case types.LOGOUT:{
+
+        return {
+          ...state,
+          verified: false
+        }
       }
 
     case types.POST_GET_ART_SUCCESS:
