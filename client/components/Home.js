@@ -31,6 +31,7 @@ class Home extends Component {
     
     render() {
       if(this.props.verified === false){
+        console.log(`Verified not on, go to signin`);
         return <Redirect to="/signin" />
       }
 

@@ -76,6 +76,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         userCreated: newUserCreated,
+        verified: true,
         failedSignup: false
       };
 

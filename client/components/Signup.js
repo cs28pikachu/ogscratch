@@ -25,6 +25,7 @@ class Signup extends Component {
 
     render() {
       if (this.props.userCreated === true) {
+        console.log('User Created - redirect to home');
         homeAfterSignupLoaded = true;
         return <Redirect to="/Home"></Redirect>
       }
